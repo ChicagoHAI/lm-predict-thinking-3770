@@ -1,0 +1,94 @@
+{
+  "experiment_date": "2025-11-30",
+  "n_problems": 30,
+  "n_train": 21,
+  "n_test": 9,
+  "thinking_tokens_stats": {
+    "mean": 172.5,
+    "std": 41.72963058745569,
+    "min": 109,
+    "max": 289,
+    "median": 167.0
+  },
+  "correlations": {
+    "problem_length_chars": -0.08277692101062893,
+    "problem_length_words": -0.032280899447551886
+  },
+  "prediction_results": [
+    {
+      "Method": "Mean Baseline",
+      "MAE": 38.77777777777778,
+      "RMSE": 45.51637881840712,
+      "MAPE (%)": 29.285712908334823,
+      "R\u00b2": -0.3801835737667165,
+      "Correlation (r)": NaN,
+      "Acc@10 (%)": 11.11111111111111,
+      "Acc@20 (%)": 33.33333333333333,
+      "Acc@30 (%)": 44.44444444444444
+    },
+    {
+      "Method": "Linear Regression",
+      "MAE": 41.16664259499976,
+      "RMSE": 48.64723741440483,
+      "MAPE (%)": 31.430952721689913,
+      "R\u00b2": -0.5765865342418617,
+      "Correlation (r)": -0.4272679529943895,
+      "Acc@10 (%)": 22.22222222222222,
+      "Acc@20 (%)": 22.22222222222222,
+      "Acc@30 (%)": 44.44444444444444
+    },
+    {
+      "Method": "Gradient Boosting",
+      "MAE": 67.0988399439838,
+      "RMSE": 78.16426194336994,
+      "MAPE (%)": 49.40298023716505,
+      "R\u00b2": -3.07022025115796,
+      "Correlation (r)": -0.056862365083176436,
+      "Acc@10 (%)": 11.11111111111111,
+      "Acc@20 (%)": 11.11111111111111,
+      "Acc@30 (%)": 11.11111111111111
+    },
+    {
+      "Method": "Meta-Prompting (GPT-4)",
+      "MAE": 88.11111111111111,
+      "RMSE": 92.2900018660984,
+      "MAPE (%)": 56.78512427765535,
+      "R\u00b2": -4.674279933544981,
+      "Correlation (r)": 0.7074776731181249,
+      "Acc@10 (%)": 0.0,
+      "Acc@20 (%)": 0.0,
+      "Acc@30 (%)": 0.0
+    },
+    {
+      "Method": "Meta-Prompting (Calibrated)",
+      "MAE": 31.98905309250138,
+      "RMSE": 41.36970782984531,
+      "MAPE (%)": 19.819065438003292,
+      "R\u00b2": -0.140161456089253,
+      "Correlation (r)": 0.7074776731181249,
+      "Acc@10 (%)": 11.11111111111111,
+      "Acc@20 (%)": 44.44444444444444,
+      "Acc@30 (%)": 66.66666666666666
+    }
+  ],
+  "statistical_tests": {
+    "meta_vs_baseline_ttest": {
+      "t_statistic": 0.45643303075494907,
+      "p_value": 0.6602151856538381,
+      "significant": false
+    },
+    "correlation_test": {
+      "pearson_r": 0.7074776731181249,
+      "p_value": 0.03301210732737385,
+      "significant": true
+    },
+    "effect_size_cohens_d": 0.27088042364011566
+  },
+  "key_findings": [
+    "LLMs show significant correlation (r=0.707, p=0.033) when predicting thinking tokens",
+    "Systematic underprediction by ~2.3x - models underestimate their own verbosity",
+    "After calibration: MAPE=19.8%, Acc@30=66.7%",
+    "Meta-prompting outperforms feature-based methods in correlation",
+    "Problem length has near-zero correlation with thinking tokens (r=-0.032)"
+  ]
+}
